@@ -1,0 +1,21 @@
+Universe = vanilla
+
+Requirements = (Target.Opsys == "LINUX" && Target.Arch == "X86_64" && HAS_STANDARD_IMAGE =?= True)
+Rank = Memory
+Request_memory = 3072
+Request_cpus = 2
+
+Log = $(Process)/fortran.log
+Output = $(Process)/fortran.out
+Error = $(Process)/fortran.error
+Notification = error
+
+WhenToTransferOutput = ON_EXIT
+ShouldTransferFiles = Yes
+
+Executable = CrystalGrower.x
+Input = $(Process)/addinput.txt
+
+Transfer_Input_Files = CrystalGrower.x,CHA_new.txt,CHA_facets_found_rhombohedral.txt,$(Process)/
+
+Queue 25
